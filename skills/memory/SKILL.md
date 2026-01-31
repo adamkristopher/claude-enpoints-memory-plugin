@@ -1,31 +1,41 @@
 ---
 name: memory
-description: Load and search persistent memory from Endpoints API. Use when recalling previous sessions or searching for past context.
+description: >
+  Save this session's learnings to persistent memory (cc-drive + cc-ram index).
+  Run before exiting or when prompted at context compaction.
 ---
 
-# Memory Skill
+# Save Session to Memory
 
-Access persistent memory stored in the Endpoints API.
+Capture what was learned in this session to persistent memory.
 
-## Commands
+## What to Do
 
-```bash
-# Load all memories
-~/.claude/plugins/endpoints-memory/scripts/memory.sh load
+Use the **memory-saver** agent (subagent_type: `endpoints-memory:memory-saver`) to:
 
-# Get recent N entries
-~/.claude/plugins/endpoints-memory/scripts/memory.sh recent 5
+1. Review the current conversation for key learnings, discoveries, or research findings
+2. Save detailed findings to `cc-drive/{slug}` via the Endpoints API
+3. Update the `cc-ram/index` with a summary entry pointing to that slug
 
-# Search memories
-~/.claude/plugins/endpoints-memory/scripts/memory.sh search "authentication"
+## When to Use
+
+- Before exiting a productive session
+- When prompted at context compaction
+- After completing research or exploration
+- When the user says "remember this" or "save this"
+
+## Invoke the Agent
+
+```
+Use the Task tool with subagent_type "endpoints-memory:memory-saver" to save this session's learnings.
 ```
 
-## What Gets Saved Automatically
+The agent has access to:
+- Bash and Read tools to review context
+- The endpoints skill to save to cc-drive and cc-ram
 
-- **Session transcripts** - Cleaned conversations saved on exit
-- **Explore agent research** - Research results captured after each Explore task
+## Skip If
 
-## Endpoints
-
-- `/claude-memory/sessions` - Session transcripts
-- `/cc-research/explorer-agent` - Explore agent research
+- Session was just Q&A with no new learnings
+- Nothing worth remembering long-term
+- User declines when asked

@@ -5,31 +5,28 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/load-memory.sh",
-            "timeout": 10000
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/save-memory.sh",
-            "timeout": 30000
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/load-memory.sh"
           }
         ]
       }
     ],
     "PostToolUse": [
       {
-        "matcher": "Task",
+        "matcher": "Task|WebSearch|WebFetch",
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/save-research.sh",
-            "timeout": 30000
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/notify-research.sh"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/precompact-reminder.sh"
           }
         ]
       }

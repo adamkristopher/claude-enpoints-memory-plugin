@@ -1,16 +1,17 @@
 #!/bin/bash
-# Shared configuration loader for endpoints-memory plugin
-# Sources credentials from settings.local
+# Load Endpoints API credentials from settings.local
 
+# Self-locate plugin root (works around CLAUDE_PLUGIN_ROOT bug in skill scripts)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PLUGIN_DIR="$(dirname "$SCRIPT_DIR")"
-SETTINGS_FILE="$PLUGIN_DIR/settings.local"
+PLUGIN_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+
+SETTINGS_FILE="$PLUGIN_ROOT/settings.local"
 
 if [[ -f "$SETTINGS_FILE" ]]; then
   source "$SETTINGS_FILE"
 else
   echo "Error: Plugin not configured." >&2
-  echo "Run: ~/.claude/plugins/endpoints-memory/scripts/setup.sh" >&2
+  echo "Run: $PLUGIN_ROOT/skills/config/scripts/setup.sh" >&2
   exit 1
 fi
 

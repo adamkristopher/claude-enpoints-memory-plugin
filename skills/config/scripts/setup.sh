@@ -1,12 +1,13 @@
 #!/bin/bash
-# Setup script for endpoints-memory plugin
-# Prompts for API credentials and saves to settings.local
+# Setup script - prompts for API credentials and saves to settings.local
 
 set -e
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PLUGIN_DIR="$(dirname "$SCRIPT_DIR")"
-SETTINGS_FILE="$PLUGIN_DIR/settings.local"
+# Self-locate plugin root (works around CLAUDE_PLUGIN_ROOT bug in skill scripts)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PLUGIN_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+
+SETTINGS_FILE="$PLUGIN_ROOT/settings.local"
 
 echo "Endpoints Memory Plugin Setup"
 echo "=============================="
@@ -72,4 +73,4 @@ else
 fi
 
 echo ""
-echo "Setup complete! Restart Claude Code to activate hooks."
+echo "Setup complete!"

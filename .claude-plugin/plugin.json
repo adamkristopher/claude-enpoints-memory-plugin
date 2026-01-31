@@ -1,7 +1,7 @@
 {
   "name": "endpoints-memory",
-  "description": "Persistent memory - auto-saves sessions and Explore research to Endpoints API",
-  "version": "1.0.0",
+  "description": "Persistent memory system with cc-ram (memory index) and cc-drive (long-term storage) via Endpoints API",
+  "version": "2.0.0",
   "author": {
     "name": "Adam Carter"
   }
