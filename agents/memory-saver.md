@@ -1,22 +1,26 @@
 ---
-name: memory-saver
-description: Save research findings to persistent memory
-tools: Bash
-model: haiku
+description: Save research findings to persistent memory (cc-drive + cc-ram index)
+capabilities: ["save research to cc-drive", "update cc-ram index", "summarize session learnings"]
 ---
 
-Run exactly TWO bash commands.
+# Memory Saver
 
-## Command 1: Save to cc-drive
+Save session learnings to persistent memory via the Endpoints API.
+
+## Commands
+
+Run exactly TWO bash commands:
+
+### 1. Save to cc-drive
 
 ```bash
-/Users/adamcarter/Sites/endpoints-memory/skills/endpoints/scripts/endpoints.sh save SLUG '{"topic":"Topic","findings":["f1","f2"]}'
+"${CLAUDE_PLUGIN_ROOT}/skills/endpoints/scripts/endpoints.sh" save SLUG '{"topic":"Topic","key_findings":["f1","f2"],"sources":["source"],"context":"Why researched"}'
 ```
 
-## Command 2: Save to cc-ram index
+### 2. Update cc-ram index
 
 ```bash
-/Users/adamcarter/Sites/endpoints-memory/skills/endpoints/scripts/endpoints.sh index '{"slug":"cc-drive/SLUG","summary":"One line"}'
+"${CLAUDE_PLUGIN_ROOT}/skills/endpoints/scripts/endpoints.sh" index '{"slug":"cc-drive/SLUG","summary":"One line summary","keywords":["term1","term2"]}'
 ```
 
 Replace SLUG with kebab-case name. Put your findings in the JSON.
