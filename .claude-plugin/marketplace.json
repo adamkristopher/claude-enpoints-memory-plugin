@@ -1,0 +1,20 @@
+{
+  "name": "adamkristopher-plugins",
+  "owner": {
+    "name": "Adam Carter"
+  },
+  "metadata": {
+    "description": "Claude Code plugins by Adam Carter"
+  },
+  "plugins": [
+    {
+      "name": "endpoints-memory",
+      "source": "./",
+      "description": "Persistent memory system with cc-ram (index) and cc-drive (storage) via Endpoints API",
+      "version": "2.0.0",
+      "keywords": ["memory", "persistence", "endpoints", "cc-ram", "cc-drive"],
+      "repository": "https://github.com/adamkristopher/claude-enpoints-memory-plugin",
+      "license": "MIT"
+    }
+  ]
+}
