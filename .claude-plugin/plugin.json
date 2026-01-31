@@ -1,0 +1,8 @@
+{
+  "name": "endpoints-memory",
+  "description": "Persistent memory - auto-saves sessions and Explore research to Endpoints API",
+  "version": "1.0.0",
+  "author": {
+    "name": "Adam Carter"
+  }
+}
