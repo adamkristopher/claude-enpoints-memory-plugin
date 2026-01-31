@@ -47,6 +47,20 @@ claude --plugin-dir /path/to/endpoints-memory
 | `endpoints` | Full Endpoints API client |
 | `memory` | Trigger memory-saver agent |
 
+### Commands
+
+| Command | Purpose |
+|---------|---------|
+| `/endpoints-memory:recall` | Review stored memories |
+| `/endpoints-memory:save` | Save session learnings to memory |
+
+### Agents
+
+| Agent | Purpose |
+|-------|---------|
+| `memory-saver` | Saves research to cc-drive and indexes in cc-ram |
+| `memory-retriever` | Retrieves relevant memories before research tasks |
+
 ### Memory Structure
 
 ```
@@ -62,9 +76,10 @@ The plugin works automatically:
 2. Run research (Explore, WebSearch, WebFetch) → findings auto-saved
 3. Before context compaction → reminded to save learnings
 
-Manual save:
+Manual commands:
 ```
-/memory
+/endpoints-memory:recall   # Review what's stored
+/endpoints-memory:save     # Save current session learnings
 ```
 
 ## License
